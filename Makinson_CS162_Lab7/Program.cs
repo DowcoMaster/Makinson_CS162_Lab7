@@ -54,7 +54,7 @@ class Program
         Console.WriteLine("Test 7: IsPlayable with Hand");
         Console.WriteLine(train.IsPlayable(hand, d3, out mustFlipHand) && !mustFlipHand ? "Passed" : "Failed");
 
-        Console.WriteLine("Testing Player Train");
+        Console.WriteLine("\nTesting Player Train");
         Hand playerHand = new Hand();
         playerHand.Dominos.Add(new Domino(5, 6));
         playerHand.Dominos.Add(new Domino(6, 7));
@@ -90,5 +90,30 @@ class Program
         testHand.Dominos.Add(new Domino(6, 7));
         bool mustFlip1;
         Console.WriteLine(playerTrain2.IsPlayable(testHand, testHand.Dominos[0], out mustFlip1) && !mustFlip1 ? "Passed" : "Failed");
+
+        Console.WriteLine("\nTesting Interfaces");
+        Console.WriteLine("Test 1: Dominos sort");
+        Console.WriteLine("Creating a domino list with: (3,5) (1,4) (2,5) (3,6)");
+        List<Domino> dominos = new List<Domino>
+        {
+            new Domino(3,5),
+            new Domino(1,4),
+            new Domino(2,5),
+            new Domino(3,6)
+        };
+        dominos.Sort();
+        Console.WriteLine("Here are the dominos sorted out");
+
+        foreach (Domino domino in dominos)
+        {
+            Console.WriteLine(domino.ToString());
+        }
+        Console.WriteLine("Test 2: Testing iterations");
+        MexicanTrain mexicanTrain = new MexicanTrain(0);
+        mexicanTrain.AddDomino(new Domino(0, 1));
+        mexicanTrain.AddDomino(new Domino(1, 3));
+        mexicanTrain.AddDomino(new Domino(3, 4));
+
+        foreach (Domino domino in mexicanTrain) { Console.WriteLine(domino.ToString());}
     }
 }

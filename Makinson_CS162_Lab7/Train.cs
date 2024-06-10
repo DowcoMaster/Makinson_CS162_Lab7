@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,11 +8,18 @@ using System.Threading.Tasks;
 using BoneyardClasses;
 using DominoClasses;
 
-public abstract class Train
+public abstract class Train : IEnumerable<Domino>
 {
     protected List<Domino> dominos = new List<Domino>();
     protected int engineValue;
-
+    public IEnumerator<Domino> GetEnumerator()
+    {
+        return dominos.GetEnumerator();
+    }
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
     public int Count
     {
         get

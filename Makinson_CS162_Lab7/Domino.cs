@@ -19,7 +19,7 @@ namespace BoneyardClasses
         public int CompareTo(Domino domino)
         {
             if (domino == null) return 1;
-            return 0;
+            return this.Value.CompareTo(domino.Value);
         }
         public int Value
         {
@@ -40,7 +40,9 @@ namespace BoneyardClasses
         }
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            if(obj == null) return false;
+            Domino domino = obj as Domino;
+            return domino != null && this.LeftDot == domino.LeftDot && this.RightDot == domino.RightDot;
         }
         public override int GetHashCode()
         {
