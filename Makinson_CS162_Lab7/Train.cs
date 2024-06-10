@@ -9,8 +9,8 @@ using DominoClasses;
 
 public abstract class Train
 {
-    public List<Domino> dominos = new List<Domino>();
-    private int engineValue;
+    protected List<Domino> dominos = new List<Domino>();
+    protected int engineValue;
 
     public int Count
     {
@@ -53,9 +53,9 @@ public abstract class Train
         {
             if (dominos.Count == 0)
             {
-                return 0;
+                return EngineValue;
             }
-            return dominos[dominos.Count - 1].Value;
+            return LastDomino.RightDot;
         }
     }
     public Domino this[int i]
@@ -69,7 +69,7 @@ public abstract class Train
     {
         dominos.Add(d);
     }
-    protected bool IsPlayable(Domino d, out bool mustFlip)
+    public bool IsPlayable(Domino d, out bool mustFlip)
     {
         mustFlip = false;
         if (dominos.Count == 0)
@@ -83,7 +83,7 @@ public abstract class Train
         }
         return false;
     }
-    protected abstract bool IsPlayable(Hand h, Domino d, out bool mustFlip);
+    public abstract bool IsPlayable(Hand h, Domino d, out bool mustFlip);
     public override string ToString()
     {
         StringBuilder stringBuilder = new StringBuilder();
@@ -91,7 +91,7 @@ public abstract class Train
         stringBuilder.Append("Dominos: \n");
         foreach (var d in dominos)
         {
-            stringBuilder.Append(dominos.ToString() + "\n");
+            stringBuilder.Append(d.ToString() + "\n");
         }
         return stringBuilder.ToString();
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BoneyardClasses
 {
 
-    public class Domino
+    public class Domino : IComparable<Domino>
     {
         public int LeftDot { get; set; }
         public int RightDot { get; set; }
@@ -15,6 +15,11 @@ namespace BoneyardClasses
         {
             LeftDot = leftDot;
             RightDot = rightDot;
+        }
+        public int CompareTo(Domino domino)
+        {
+            if (domino == null) return 1;
+            return 0;
         }
         public int Value
         {
@@ -43,7 +48,7 @@ namespace BoneyardClasses
         }
         public override string ToString()
         {
-            return (LeftDot + RightDot).ToString();
+            return ("Left: " + LeftDot + " Right: "+ RightDot);
         }
     }
 }

@@ -35,7 +35,7 @@ public class PlayerTrain : Train
     }
 
     // Implementation of the abstract IsPlayable method
-    protected override bool IsPlayable(Hand hand, Domino domino, out bool mustFlip)
+    public override bool IsPlayable(Hand hand, Domino domino, out bool mustFlip)
     {
         mustFlip = false;
         foreach (Domino d in hand.Dominos)
